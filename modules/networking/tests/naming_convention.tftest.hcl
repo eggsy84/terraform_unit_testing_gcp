@@ -18,3 +18,17 @@ run "valid_dev_naming_convention" {
     error_message = "Prod subnet name did not match expected naming convention"
   }
 }
+
+run "valid_dev_naming_convention_alternative_region" {
+
+  command = plan
+
+  variables {
+    region        = "asia-east1"
+  }
+
+  assert {
+    condition     = google_compute_subnetwork.dev.name == "acme-app-as-ea1-dev-subnet"
+    error_message = "Dev subnet name did not match expected naming convention"
+  }
+}
