@@ -12,14 +12,14 @@ resource "google_compute_network" "vpc_network" {
 # acme-app-eu-we2-prod-subnet
 # acme-app-eu-we2-dev-subnet
 resource "google_compute_subnetwork" "dev" {
-  name          = "${var.company_name}-app-${substr(var.region, 0, 2)}-${substr(trimprefix(var.region, "-"), 0, 2)}-dev-subnet"
+  name          = "${var.company_name}-app-${substr(var.region, 0, 2)}-${substr(regex("-[a-z]+", var.region), 1, 2)}${substr(var.region, length(var.region) -1, 1)}-dev-subnet"
   ip_cidr_range = "10.128.0.0/20"
   region        = var.region
   network       = google_compute_network.vpc_network.id
 }
 
 resource "google_compute_subnetwork" "prod" {
-  name          = "${var.company_name}-app-${substr(var.region, 0, 2)}-${substr(trimprefix(var.region, "-"), 0, 2)}-prod-subnet"
+  name          = "${var.company_name}-app-${substr(var.region, 0, 2)}-${substr(regex("-[a-z]+", var.region), 1, 2)}${substr(var.region, length(var.region) -1, 1)}-prod-subnet"
   ip_cidr_range = "10.154.0.0/20"
   region        = var.region
   network       = google_compute_network.vpc_network.id

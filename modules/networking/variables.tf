@@ -3,6 +3,10 @@ variable "company_name" {
 }
 
 variable "region" {
-  type    = string
-  default = "europe-west2"
+  type      = string
+  default   = "europe-west2"
+}
+
+variable "project_id" {
+    type  = string
 }
