@@ -4,8 +4,9 @@
 # https://cloud.google.com/architecture/best-practices-vpc-design#naming
 
 resource "google_compute_network" "vpc_network" {
-  name = "${var.company_name}-app"
-  description = "VPC network for the ${var.company_name} app"
+  name                      = "${var.company_name}-app"
+  description               = "VPC network for the ${var.company_name} app"
+  auto_create_subnetworks   = false
 }
 
 # Example name for europe-west2 and company name Acme company app
