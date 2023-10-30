@@ -2,4 +2,4 @@
 
 Code example for accompanying blog post on Terraform Unit Testing
 
-[LINK HERE JAMES]()
+[Terraform unit testing](https://blog.ctoandsellout.com/terraform-unit-testing)
